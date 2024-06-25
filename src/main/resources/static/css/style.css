@@ -29,6 +29,7 @@ header {
     align-items: center;
     flex-grow: 1; /* 부모 컨테이너의 너비에 맞게 크기 조정 */
     max-width: 500px; /* 최대 너비 설정 (원하는 값으로 조정 가능) */
+    min-width: 35px; /* 최소 너비 설정 */
 }
 
 .search-bar input {
@@ -39,14 +40,16 @@ header {
     width: 100%; /* 원하는 너비로 조정 */
     padding-right: 40px; /* 돋보기 아이콘을 위한 여유 공간 */
     box-sizing: border-box; /* 패딩 포함하여 너비 계산 */
+    height: 38px; /* Input의 높이 설정 */
 }
 
 .search-icon {
     position: absolute;
     right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 20px;
     color: #888;
-	pointer-events: none; /* 아이콘 클릭 불가 */
 }
 
 .header-container {
@@ -112,31 +115,36 @@ header {
 
 /* nav */
 .home-icon {
-    font-size: 20px; /* 아이콘 크기 조정 */
+    font-size: 20px;
     color: #888;
     margin-right: 10px;
 }
 nav {
     background-color: #444;
     padding: 10px 0;
+    margin-bottom: 0; /* nav 아래의 빈틈 없애기 */
 }
 
-nav ul {
+.navbar-nav {
     list-style: none;
     display: flex;
     justify-content: center;
     padding: 0;
     margin: 0;
+    width: 100%;
+    align-items:center;
 }
 
-nav ul li {
+.navbar-nav .nav-item {
     margin: 0 40px;
 }
 
-nav ul li a {
+.navbar-nav .nav-link {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold !important;
+    text-align: center;
 }
 
 

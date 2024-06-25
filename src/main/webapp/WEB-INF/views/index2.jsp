@@ -42,19 +42,40 @@
                 </div>
             </div>
         </header>
-          <!-- 메인 카테고리 시작 -->
-        <nav>
-            <ul>
-            <li><a href="#"><i class="fas fa-home home-icon"></i></a></li>
-                <li><a href="#">서점</a></li>
-                <li><a href="#">공지사항</a></li>
-                <li><a href="#">열람실</a></li>
-                <li><a href="#">지점안내</a></li>
-                <li><a href="#">이벤트</a></li>
-            </ul>
-        </nav>
-    <!-- 메인 카테고리 끝 -->
-        <!-- header 끝 -->
+
+       <!-- nav 카테고리 시작 -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <div class="container-fluid">
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+               <ul class="navbar-nav">
+                   <li class="nav-item">
+                       <a class="navbar-brand" href="#"><i class="fas fa-home home-icon"></i></a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link font-weight-bold" href="#">서점</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link font-weight-bold" href="#">공지사항</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link font-weight-bold" href="#">열람실</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link font-weight-bold" href="#">지점안내</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link font-weight-bold" href="#">이벤트</a>
+                   </li>
+               </ul>
+           </div>
+       </div>
+   </nav>
+   <!-- nav 카테고리 끝 -->
+
+
 
         <!-- container -->
         <div class="main">
