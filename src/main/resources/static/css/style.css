@@ -1,0 +1,233 @@
+/* body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+
+/* header */
+header {
+    background-color: white;
+    color: black;
+    padding: 20px 0;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* 부모 컨테이너의 너비에 맞게 크기 조정 */
+    max-width: 500px; /* 최대 너비 설정 (원하는 값으로 조정 가능) */
+}
+
+.search-bar input {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 15px; /* 둥근 모서리 */
+    border: 1px solid #ccc;
+    width: 100%; /* 원하는 너비로 조정 */
+    padding-right: 40px; /* 돋보기 아이콘을 위한 여유 공간 */
+    box-sizing: border-box; /* 패딩 포함하여 너비 계산 */
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    color: #888;
+	pointer-events: none; /* 아이콘 클릭 불가 */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.header-container .logo h1 {
+    margin: 0;
+    margin-right: 20px; /* 문자 옆에 여백 추가 */
+}
+
+.header-container .search-bar input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.header-container .header-links {
+    display: flex;
+    align-items: center;
+}
+
+.header-container .header-links a {
+    color: black;
+    margin-left: 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.header-container .header-links i {
+    margin-right: 5px;
+    font-size: 15px; /* 아이콘 크기를 글씨 크기와 맞추기 */
+}
+
+
+/* nav */
+.home-icon {
+    font-size: 20px; /* 아이콘 크기 조정 */
+    color: #888;
+    margin-right: 10px;
+}
+nav {
+    background-color: #444;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 40px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+
+/* main  */
+main {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 각 섹션 사이의 간격 */
+}
+
+.banner {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(233, 234, 172); /* 배경색 설정 */
+    border-radius: 10px; /* 둥근 모서리 */
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.best-books, .today-book {
+    padding: 20px;
+    background-color: rgb(233, 234, 172); /* 배경색 설정 */
+    border-radius: 10px; /* 둥근 모서리 */
+}
+
+.best-books h2, .today-book h2 {
+    margin-bottom: 20px;
+}
+
+.books {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book {
+    text-align: center;
+}
+
+.book img {
+    width: 120px;
+    height: auto;
+}
+
+.book p {
+    margin: 10px 0 5px;
+    font-size: 15px; /* 제목 글자 크기 */
+}
+
+.book span {
+    font-size: 10px; /* 가격 글자 크기 */
+}
+
+button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* footer */
+footer {
+    background-color: #f9e36e; /* 배경색 설정 */
+    padding: 10px 0;  /* padding을 줄여서 높이 조정 */
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+.footer-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* 위쪽 정렬 */
+    margin-top: 10px; /* 위쪽 여백 추가 */
+}
+
+.footer-logo h1 {
+    margin: 5px;
+    font-size: 30px; /* 로고 글씨 크기 */
+}
+
+.footer-logo p {
+    margin: 5px;
+    font-weight: normal; /* 보통 글씨 */
+    line-height: 1.2; /* 줄 간격 조정 */
+    font-size: 12px; /* 글씨 크기 조정 */
+}
+
+.footer-info {
+    text-align: left;
+    font-weight: normal; /* 보통 글씨 */
+    line-height: 1; /* 줄 간격 조정 */
+    font-size: 12px; /* 글씨 크기 조정 */
+}
+
+.footer-links {
+    text-align: right;
+    font-size: 15px;
+    margin-left: 500px; /* 더 왼쪽으로 이동 */
+    margin-top: 10px; /* 위쪽 여백 추가 */
+}
+
+.footer-links a {
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.footer-bottom {
+    margin-top: 5px;
+    color: black;
+    font-size: 10px; /* 글씨 크기 조정 */
+}
