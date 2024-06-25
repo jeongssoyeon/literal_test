@@ -1,9 +1,18 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+    li { list-style: none; }
+    header, nav { display: block; }    
+
 /* body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f7f7f7;
+}
+
+
+.wrap {
+    width: 100%;
 }
 
 
@@ -77,6 +86,29 @@ header {
     font-size: 15px; /* 아이콘 크기를 글씨 크기와 맞추기 */
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    height: 500px; /* 변경된 height */
+  }
+
+  .container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .carousel-inner {
+    width: 100%;
+    height: 500px; /* 변경된 height */
+  }
+
+  .carousel-item {
+      width:100%;
+    height: 500px; /* 변경된 height */
+  }
+
 
 /* nav */
 .home-icon {
@@ -117,12 +149,13 @@ main {
     gap: 20px; /* 각 섹션 사이의 간격 */
 }
 
-.banner {
+/*.banner {
     text-align: center;
     padding: 20px;
-    background-color: rgb(233, 234, 172); /* 배경색 설정 */
-    border-radius: 10px; /* 둥근 모서리 */
+    background-color: rgb(233, 234, 172); 
+    border-radius: 10px; 
 }
+*/
 
 .banner img {
     width: 100%;
@@ -133,7 +166,7 @@ main {
 .best-books, .today-book {
     padding: 20px;
     background-color: rgb(233, 234, 172); /* 배경색 설정 */
-    border-radius: 10px; /* 둥근 모서리 */
+    margin: 30px 0;
 }
 
 .best-books h2, .today-book h2 {
@@ -142,7 +175,7 @@ main {
 
 .books {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .book {
@@ -173,6 +206,22 @@ button {
     border-radius: 15px;
     cursor: pointer;
     font-size: 16px;
+}
+
+/*  content */
+.content {
+    width:90%;
+    margin:0 auto;
+}
+
+.carousel-item img{
+    width:100%;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 /* footer */
