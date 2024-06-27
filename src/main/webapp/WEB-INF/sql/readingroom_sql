@@ -1,0 +1,63 @@
+-- Branch Table
+CREATE TABLE branch (
+    branch_code VARCHAR(10) NOT NULL PRIMARY KEY,
+    branch_name VARCHAR(50) NOT NULL,
+    branch_email VARCHAR(30) NOT NULL,
+    branch_pw VARCHAR(20) NOT NULL,
+    branch_detail VARCHAR(100),
+    branch_address VARCHAR(100),
+    latitude VARCHAR(50),
+    longitude VARCHAR(50)
+);
+
+-- Seat Table
+CREATE TABLE seat (
+    seat_code VARCHAR(20) NOT NULL PRIMARY KEY,
+    branch_code VARCHAR(10),
+    FOREIGN KEY (branch_code) REFERENCES branch(branch_code)
+);
+
+-- Reading Room Table
+CREATE TABLE reading_room (
+    room_code VARCHAR(20) NOT NULL PRIMARY KEY,
+    duration TIME NOT NULL,
+    room_amount INT NOT NULL
+);
+
+-- Use Time Table
+CREATE TABLE use_time (
+    time_code VARCHAR(20) NOT NULL PRIMARY KEY,
+    start_time VARCHAR(10) NOT NULL
+);
+
+-- My Coupon Table
+CREATE TABLE my_coupon (
+    mycoupon_number VARCHAR(30) NOT NULL PRIMARY KEY,
+    email VARCHAR(30) NOT NULL,
+    room_code VARCHAR(20) NOT NULL,
+    issue_date DATE NOT NULL,
+    expiry_date DATE NOT NULL,
+    usage_date DATE,
+    FOREIGN KEY (email) REFERENCES member(email),
+    FOREIGN KEY (room_code) REFERENCES reading_room(room_code)
+);
+
+-- Reservation Table
+CREATE TABLE reservation (
+    reservation_code VARCHAR(20) NOT NULL PRIMARY KEY,
+    room_code VARCHAR(20) NOT NULL,
+    mycoupon_number VARCHAR(30),
+    reservation_total INT NOT NULL,
+    seat_code VARCHAR(20) NOT NULL,
+    reservation_payment VARCHAR(20) NOT NULL,
+    time_code VARCHAR(20) NOT NULL,
+    end_time VARCHAR(10),
+    reservation_date DATE NOT NULL,
+    using_seat VARCHAR(20),
+    re_name VARCHAR(20) NOT NULL,
+    re_phone VARCHAR(15) NOT NULL,
+    FOREIGN KEY (room_code) REFERENCES reading_room(room_code),
+    FOREIGN KEY (mycoupon_number) REFERENCES my_coupon(mycoupon_number),
+    FOREIGN KEY (seat_code) REFERENCES seat(seat_code),
+    FOREIGN KEY (time_code) REFERENCES use_time(time_code)
+);

@@ -29,7 +29,7 @@
         <header>
             <div class="header-container">
                 <div class="logo">
-                    <h1>LITERAL</h1>
+                    <a href="/"><h1>LITERAL</h1></a>
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="검색어를 입력해주세요">
@@ -52,7 +52,7 @@
            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                <ul class="navbar-nav">
                    <li class="nav-item">
-                       <a class="navbar-brand" href="#"><i class="fas fa-home home-icon"></i></a>
+                       <a class="navbar-brand" href="/"><i class="fas fa-home home-icon"></i></a>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link font-weight-bold" href="#">서점</a>
@@ -61,7 +61,7 @@
                        <a class="nav-link font-weight-bold" href="#">공지사항</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link font-weight-bold" href="#">열람실</a>
+                       <a class="nav-link font-weight-bold" href="/reservationForm">열람실</a>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link font-weight-bold" href="#">지점안내</a>

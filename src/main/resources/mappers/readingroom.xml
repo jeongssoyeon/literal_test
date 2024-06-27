@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.literal.readingroom.dao.ReadingRoomDAO">
+
+    <!-- ReadingRoom 관련 SQL문 -->
+    <select id="getAllReadingRooms" resultType="kr.co.literal.readingroom.dto.ReadingRoomDTO">
+        SELECT * FROM reading_room
+    </select>
+
+    <select id="getReadingRoomByCode" parameterType="string" resultType="kr.co.literal.readingroom.dto.ReadingRoomDTO">
+        SELECT * FROM reading_room WHERE room_code = #{room_code}
+    </select>
+
+    <insert id="insertReadingRoom" parameterType="kr.co.literal.readingroom.dto.ReadingRoomDTO">
+        INSERT INTO reading_room (room_code, duration, room_amount) VALUES (#{room_code}, #{duration}, #{room_amount})
+    </insert>
+
+    <update id="updateReadingRoom" parameterType="kr.co.literal.readingroom.dto.ReadingRoomDTO">
+        UPDATE reading_room SET duration = #{duration}, room_amount = #{room_amount} WHERE room_code = #{room_code}
+    </update>
+
+    <delete id="deleteReadingRoom" parameterType="string">
+        DELETE FROM reading_room WHERE room_code = #{room_code}
+    </delete>
+
+    <!-- UseTime 관련 SQL문 -->
+    <select id="getAllUseTimes" resultType="kr.co.literal.readingroom.dto.UseTimeDTO">
+        SELECT * FROM use_time
+    </select>
+
+    <select id="getUseTimeByCode" parameterType="string" resultType="kr.co.literal.readingroom.dto.UseTimeDTO">
+        SELECT * FROM use_time WHERE time_code = #{time_code}
+    </select>
+
+    <insert id="insertUseTime" parameterType="kr.co.literal.readingroom.dto.UseTimeDTO">
+        INSERT INTO use_time (time_code, start_time) VALUES (#{time_code}, #{start_time})
+    </insert>
+
+    <update id="updateUseTime" parameterType="kr.co.literal.readingroom.dto.UseTimeDTO">
+        UPDATE use_time SET start_time = #{start_time} WHERE time_code = #{time_code}
+    </update>
+
+    <delete id="deleteUseTime" parameterType="string">
+        DELETE FROM use_time WHERE time_code = #{time_code}
+    </delete>
+
+    <!-- Seat 관련 SQL문 -->
+    <select id="getAllSeats" resultType="kr.co.literal.readingroom.dto.SeatDTO">
+        SELECT * FROM seat
+    </select>
+
+    <select id="getSeatByCode" parameterType="string" resultType="kr.co.literal.readingroom.dto.SeatDTO">
+        SELECT * FROM seat WHERE seat_code = #{seat_code}
+    </select>
+
+    <insert id="insertSeat" parameterType="kr.co.literal.readingroom.dto.SeatDTO">
+        INSERT INTO seat (branch_code, seat_code) VALUES (#{branch_code}, #{seat_code})
+    </insert>
+
+    <update id="updateSeat" parameterType="kr.co.literal.readingroom.dto.SeatDTO">
+        UPDATE seat SET branch_code = #{branch_code} WHERE seat_code = #{seat_code}
+    </update>
+
+    <delete id="deleteSeat" parameterType="string">
+        DELETE FROM seat WHERE seat_code = #{seat_code}
+    </delete>
+
+    <!-- MyCoupon 관련 SQL문 -->
+    <select id="getAllMyCoupons" resultType="kr.co.literal.readingroom.dto.MyCouponDTO">
+        SELECT * FROM my_coupon
+    </select>
+
+    <select id="getMyCouponByNumber" parameterType="string" resultType="kr.co.literal.readingroom.dto.MyCouponDTO">
+        SELECT * FROM my_coupon WHERE mycoupon_number = #{mycoupon_number}
+    </select>
+
+    <insert id="insertMyCoupon" parameterType="kr.co.literal.readingroom.dto.MyCouponDTO">
+        INSERT INTO my_coupon (email, mycoupon_number, room_code, issue_date, expiry_date, usage_date) 
+        VALUES (#{email}, #{mycoupon_number}, #{room_code}, #{issue_date}, #{expiry_date}, #{usage_date})
+    </insert>
+
+    <update id="updateMyCoupon" parameterType="kr.co.literal.readingroom.dto.MyCouponDTO">
+        UPDATE my_coupon SET email = #{email}, room_code = #{room_code}, issue_date = #{issue_date}, expiry_date = #{expiry_date}, usage_date = #{usage_date}
+        WHERE mycoupon_number = #{mycoupon_number}
+    </update>
+
+    <delete id="deleteMyCoupon" parameterType="string">
+        DELETE FROM my_coupon WHERE mycoupon_number = #{mycoupon_number}
+    </delete>
+</mapper>
