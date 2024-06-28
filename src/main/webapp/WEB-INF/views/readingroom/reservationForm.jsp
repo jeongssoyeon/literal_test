@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/side_menu.css">
+
 <main>
     <div class="contents_inner">
-        <!-- 사이드 메뉴 시작 -->
+    	<!-- 사이드 메뉴 시작 -->
         <div class="sidebar">
             <h2>열람실 예약</h2>
             <ul>
@@ -14,11 +16,12 @@
             </ul>
         </div>
         <!-- 사이드 메뉴 끝 -->
-
-        <!-- 본문 시작 -->
-        <div class="content">
+        
+        <div class="reservation-form">
             <h1>열람실 예약</h1>
             <hr class="title-divider">
+            <!-- 예약 폼 내용 -->
+            <div class="content">
             <div class="info-section">
                 <div class="info-box">
                 	<img src="./images/moon.png" alt="예약일 아이콘">
@@ -55,7 +58,7 @@
                 종로점 : 02-6255-8002</p>
             </section>
         </div>
-        <!-- 본문 끝 -->
+        </div>
     </div>
 </main>
 <%@ include file="../footer.jsp"%>

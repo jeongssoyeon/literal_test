@@ -25,12 +25,13 @@
                 <form id="paymentForm" action="${pageContext.request.contextPath}/paymentForm" method="post">
                     <input type="hidden" name="branch" value="${branch}">
                     <input type="hidden" name="seat" value="${seat}">
+                    <input type="hidden" name="totalAmount" id="totalAmount">
                     <h2>이용권</h2>
                     <div class="options">
-                        <button type="button" class="option" data-usageTime="2시간">2 시간<br>4,000 원</button>
-                        <button type="button" class="option" data-usageTime="4시간">4 시간<br>6,000 원</button>
-                        <button type="button" class="option" data-usageTime="6시간">6 시간<br>8,000 원</button>
-                        <button type="button" class="option" data-usageTime="종일권">종일 권<br>10,000 원</button>
+                        <button type="button" class="option" data-usageTime="2시간" data-amount="4000">2 시간<br>4,000 원</button>
+                        <button type="button" class="option" data-usageTime="4시간" data-amount="6000">4 시간<br>6,000 원</button>
+                        <button type="button" class="option" data-usageTime="6시간" data-amount="8000">6 시간<br>8,000 원</button>
+                        <button type="button" class="option" data-usageTime="종일권" data-amount="10000">종일권<br>10,000 원</button>
                     </div>
                     <input type="hidden" name="usageTime" id="selectedUsageTime">
                     <h2>시작 시간</h2>
@@ -45,7 +46,7 @@
                         <button type="button" class="time" data-startTime="16:00">16 : 00</button>
                     </div>
                     <input type="hidden" name="startTime" id="selectedStartTime">
-                    <button type="submit" class="btn-primary">결제 하기</button>
+                    <button type="submit" class="btn-primary">결제하기</button>
                 </form>
             </div>
         </div>
@@ -69,6 +70,7 @@
                 selectedOption = this;
                 selectedOption.classList.add("selected");
                 document.getElementById("selectedUsageTime").value = selectedOption.getAttribute("data-usageTime");
+                document.getElementById("totalAmount").value = selectedOption.getAttribute("data-amount");
             });
         });
 

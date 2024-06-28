@@ -36,7 +36,7 @@
                     <!-- 선택된 좌석 정보를 저장할 숨겨진 필드 -->
                     <input type="hidden" name="seat" id="selectedSeat">
                     <!-- 예약하기 버튼 -->
-                    <button type="submit" class="btn-primary">예약 하기</button>
+                    <button type="submit" class="btn-primary">예약하기</button>
                 </form>
             </div>
         </div>

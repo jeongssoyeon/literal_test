@@ -366,6 +366,8 @@ footer {
     cursor: pointer;
 }
 
+
+
 /* 선택된 좌석 스타일 */
 .seat.selected {
     background-color: #A8D5E2; /* 선택된 좌석의 배경색 */

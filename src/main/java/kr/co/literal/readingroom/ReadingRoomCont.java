@@ -58,6 +58,31 @@ public class ReadingRoomCont {
         model.addAttribute("startTime", startTime);
         return "readingroom/paymentForm";
     }
+    
+    @PostMapping("/processPayment")
+    public String processPayment(@RequestParam("branch") String branch,
+                                 @RequestParam("seat") String seat,
+                                 @RequestParam("usageTime") String usageTime,
+                                 @RequestParam("startTime") String startTime,
+                                 @RequestParam("paymentMethod") String paymentMethod,
+                                 @RequestParam("totalAmount") String totalAmount,
+                                 Model model) {
+        // 현재는 결제 정보 처리 로직 없이 모델에 데이터만 추가
+        model.addAttribute("branch", branch);
+        model.addAttribute("seat", seat);
+        model.addAttribute("usageTime", usageTime);
+        model.addAttribute("startTime", startTime);
+        model.addAttribute("paymentMethod", paymentMethod);
+        model.addAttribute("totalAmount", totalAmount);
+
+        return "readingroom/paymentResult"; // 결제 결과 페이지로 이동
+    }
+    
+    
+    
+    
+ 
+    
 
     // 테스트용 메소드 추가
     @GetMapping("/test")
@@ -66,4 +91,5 @@ public class ReadingRoomCont {
         model.addAttribute("readingRooms", readingRooms);
         return "readingroom/test";
     }
+    
 }
