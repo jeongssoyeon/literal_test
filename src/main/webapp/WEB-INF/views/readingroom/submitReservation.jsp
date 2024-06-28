@@ -59,6 +59,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         const options = document.querySelectorAll(".option");
         const times = document.querySelectorAll(".time");
+        const paymentForm = document.getElementById("paymentForm");
         let selectedOption = null;
         let selectedTime = null;
 
@@ -70,7 +71,6 @@
                 selectedOption = this;
                 selectedOption.classList.add("selected");
                 document.getElementById("selectedUsageTime").value = selectedOption.getAttribute("data-usageTime");
-                document.getElementById("totalAmount").value = selectedOption.getAttribute("data-amount");
             });
         });
 
@@ -83,6 +83,13 @@
                 selectedTime.classList.add("selected");
                 document.getElementById("selectedStartTime").value = selectedTime.getAttribute("data-startTime");
             });
+        });
+
+        paymentForm.addEventListener("submit", function(event) {
+            if (!selectedOption || !selectedTime) {
+                event.preventDefault();
+                alert("이용권과 시작 시간을 모두 선택해 주세요.");
+            }
         });
     });
 </script>

@@ -26,13 +26,44 @@
                 <!-- 예약 폼 시작 -->
                 <form id="reservationForm" action="${pageContext.request.contextPath}/submitReservation" method="post">
                     <!-- 숨겨진 필드로 지점 정보 전달 -->
-                    <input type="hidden" name="branch" value="연희점">
-                    <div class="seat-grid">
-                        <!-- 좌석 버튼 생성 -->
-                        <% for (int i = 1; i <= 15; i++) { %>
-                            <button type="button" class="seat" data-seat="<%=i%>"><%=i%><br>남은 시간:</button>
-                        <% } %>
-                    </div>
+                    <input type="hidden" name="branch" value="연희점"> 
+                    <div class="seatArea">
+				        <div class="seat_row">
+				            <button type="button" class="seat" data-seat="1">1<br>남은 시간:</button>
+				            <button type="button" class="seat" data-seat="2">2<br>남은 시간:</button>
+				            <button type="button" class="seat" data-seat="3">3<br>남은 시간:</button>
+				            <button type="button" class="seat" data-seat="4">4<br>남은 시간:</button>
+				            <button type="button" class="seat" data-seat="5">5<br>남은 시간:</button>
+				        </div>
+				        <div class="seat_row">
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat" data-seat="6">6<br>남은 시간:</button>
+				        </div>
+				        <div class="seat_row">
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat" data-seat="10">10<br>남은 시간:</button>
+				            <button type="button" class="seat" data-seat="11">11<br>남은 시간:</button>
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat" data-seat="7">7<br>남은 시간:</button>
+				        </div>
+				        <div class="seat_row">
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat" data-seat="12">12<br>남은 시간:</button>
+				            <button type="button" class="seat" data-seat="13">13<br>남은 시간:</button>
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat" data-seat="8">8<br>남은 시간:</button>
+				        </div>
+				        <div class="seat_row">
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat" data-seat="14">14<br>남은 시간:</button>
+				            <button type="button" class="seat" data-seat="15">15<br>남은 시간:</button>
+				            <button type="button" class="seat seat_hidden">hidden</button>
+				            <button type="button" class="seat" data-seat="9">9<br>남은 시간:</button>
+				        </div>
+    				</div>
                     <!-- 선택된 좌석 정보를 저장할 숨겨진 필드 -->
                     <input type="hidden" name="seat" id="selectedSeat">
                     <!-- 예약하기 버튼 -->
@@ -63,6 +94,13 @@
                 // 선택된 좌석 번호를 숨겨진 필드에 저장
                 document.getElementById("selectedSeat").value = selectedSeat.getAttribute("data-seat");
             });
+        });
+
+        document.getElementById("reservationForm").addEventListener("submit", function(event) {
+            if (!document.getElementById("selectedSeat").value) {
+                event.preventDefault();
+                alert("좌석을 선택해주세요.");
+            }
         });
     });
 </script>
