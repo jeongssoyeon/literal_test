@@ -35,45 +35,56 @@
                     <input type="text" placeholder="검색어를 입력해주세요">
                 <i class="material-icons search-icon">search</i>
                 </div>
-                <div class="header-links">
-                   <a href="#"><i class="fas fa-user"></i> LOGIN</a>
-                 <a href="#"><i class="fas fa-user-circle"></i> MYPAGE</a>
-                 <a href="#"><i class="fas fa-shopping-cart"></i> CART</a>
-                </div>
+                
+<!-- index수정 6/27애경-->   
+       
+				<!-- 세션에 member 속성이 있는지 확인하여 LOGIN/LOGOUT 링크를 선택적으로 표시 -->
+                <div class="header-links user-actions">
+				    <c:choose>
+				        <c:when test="${not empty sessionScope.member}">
+				            <a href="/member/logout"><i class="fas fa-user"></i> LOGOUT</a>
+				        </c:when>
+				        <c:otherwise>
+				            <a href="/member/login"><i class="fas fa-user"></i> LOGIN</a>
+				        </c:otherwise>
+				    </c:choose>
+				    <a href="#"><i class="fas fa-user-circle"></i> MYPAGE</a>
+                 	<a href="#"><i class="fas fa-shopping-cart"></i> CART</a>
+				</div>
             </div>
         </header>
 
        <!-- nav 카테고리 시작 -->
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <div class="container-fluid">
-           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-           </button>
-           <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-               <ul class="navbar-nav">
-                   <li class="nav-item">
-                       <a class="navbar-brand" href="/"><i class="fas fa-home home-icon"></i></a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link font-weight-bold" href="#">서점</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link font-weight-bold" href="#">공지사항</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link font-weight-bold" href="/reservationForm">열람실</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link font-weight-bold" href="#">지점안내</a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link font-weight-bold" href="#">이벤트</a>
-                   </li>
-               </ul>
-           </div>
-       </div>
-   </nav>
-   <!-- nav 카테고리 끝 -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		    <div class="container-fluid">
+		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		            <span class="navbar-toggler-icon"></span>
+		        </button>
+		        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+		            <ul class="navbar-nav">
+		                <li class="nav-item">
+		                    <a class="navbar-brand" href="/"><i class="fas fa-home home-icon"></i></a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link font-weight-bold" href="/product/productlist">서점</a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link font-weight-bold" href="#">공지사항</a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link font-weight-bold" href="/reservationForm">열람실</a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link font-weight-bold" href="#">지점안내</a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link font-weight-bold" href="#">이벤트</a>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		</nav>
+		<!-- nav 카테고리 끝 -->
 
 
 
@@ -84,35 +95,35 @@
 
                 <!-- Indicators/dots -->
                 <div class="carousel-indicators">
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+	                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+	                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+	                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
                 </div>
                 
                 <!-- The slideshow/carousel -->
                 <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./images/keroro1.jpg" alt="Los Angeles" class="d-block" style="width:100%">
-                    <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>We had such a great time in LA!</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="./images/moon.png" alt="Chicago" class="d-block" style="width:100%">
-                    <div class="carousel-caption">
-                    <h3>Chicago</h3>
-                    <p>Thank you, Chicago!</p>
-                    </div> 
-                </div>
-                <div class="carousel-item">
-                    <img src="./images/remon.png" alt="New York" class="d-block" style="width:100%">
-                    <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
-                    </div>  
-                </div>
-                </div>
+	                <div class="carousel-item active">
+	                    <img src="./images/keroro1.jpg" alt="keroro" class="d-block" style="width:100%">
+	                    <div class="carousel-caption">
+	                    <h3>케로로</h3>
+	                    <p>아이들에게 인기 최고!!!!! 케로로를 책으로 만나보세요</p>
+	                    </div>
+	                </div>
+	                <div class="carousel-item">
+	                    <img src="./images/moon.png" alt="moon" class="d-block" style="width:100%">
+	                    <div class="carousel-caption">
+	                    <h3>MOON</h3>
+	                    <p>사진으로 보는 달의 모습</p>
+	                    </div> 
+	                </div>
+	                <div class="carousel-item">
+	                    <img src="./images/remon.png" alt="remon" class="d-block" style="width:100%">
+	                    <div class="carousel-caption">
+	                    <h3>아동도서</h3>
+	                    <p>과일</p>
+	                    </div>  
+	                </div>
+                </div><!-- div class="carousel-inner" end -->
                 
                 <!-- Left and right controls/icons -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
@@ -121,7 +132,7 @@
                 <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
                 </button>
-            </div>
+            </div><!-- div id="demo" end  -->
 
             <div class="content">
                 <div class="best-books">
@@ -167,11 +178,10 @@
                     </div>
                     <button>View More →</button>
                 </div>
-            </div>
-         
+            </div><!-- <div class="content"> end -->         
             <!-- Content 끝 -->
 
-        </div>
+        </div><!--  <div class="main"> -->
 
          <!-- Footer -->
         <footer>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.literal.member.MemberMapper">
+
+    <insert id="insertMember" parameterType="kr.co.literal.member.MemberDTO">
+        INSERT INTO member (name, phone_number, email, zipcode, address1, address2, password, birth_date, type_code, bank, account_number)
+        VALUES (#{name}, #{phone_number}, #{email}, #{zipcode}, #{address1}, #{address2}, #{password}, #{birth_date}, #{type_code}, #{bank}, #{account_number} )
+    </insert>
+    
+    <select id="duplicateEmail" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM member WHERE email = #{email}
+    </select>
+    
+    <select id="getMemberByEmail" parameterType="String" resultType="kr.co.literal.member.MemberDTO">
+        SELECT * FROM member WHERE email = #{email}
+    </select>
+
+    <select id="getAllMembers" resultType="kr.co.literal.member.MemberDTO">
+        SELECT * FROM member
+    </select>
+
+    <update id="updateMember" parameterType="kr.co.literal.member.MemberDTO">
+        UPDATE member
+        SET name = #{name},
+            phone_number = #{phone_number},
+            zipcode = #{zipcode},
+            address1 = #{address1},
+            address2 = #{address2},
+            password = #{password},
+            birth_date = #{birth_date},
+            type_code = #{type_code},
+            bank = #{bank},
+            account_number = #{account_number}
+        WHERE email = #{email}
+    </update>
+
+    <delete id="deleteMember" parameterType="String">
+        DELETE FROM member WHERE email = #{email}
+    </delete>
+    
+    <select id="findByNameAndEmail" parameterType="map" resultType="kr.co.literal.member.MemberDTO">
+        SELECT * FROM member WHERE name = #{name} AND email = #{email}
+    </select>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- product.xml -->
+
+<mapper namespace="kr.co.literal.product.ProductMapper">
+
+    <insert id="insert" parameterType="java.util.Map">
+        INSERT INTO product (genre_code, book_code, book_number, book_title, author, book_detail, img, img_size, grade_code, original_price, sale_price, registration_date, email, availability, branch_code)
+        VALUES (#{genre_code}, #{book_code}, #{book_number}, #{book_title}, #{author}, #{book_detail}, #{img}, #{img_size}, #{grade_code}, #{original_price}, #{sale_price}, now(), 'test@example.com', '2', 'null')
+    </insert>
+
+ 	<select id="generateBookCode" resultType="int">
+        SELECT COALESCE(MAX(CAST(SUBSTRING_INDEX(book_code, '-', -1) AS UNSIGNED)), 0) + 1
+        FROM product
+        WHERE genre_code = #{genreCode}
+    </select>
+
+	<select id="getNextBookNumber" resultType="int">
+        SELECT COALESCE(MAX(CAST(SUBSTRING(book_number, -3) AS UNSIGNED)), 0) + 1
+        FROM product
+        WHERE genre_code = #{genreCode} AND book_code = #{bookCode}
+    </select>
+    
+ </mapper>
