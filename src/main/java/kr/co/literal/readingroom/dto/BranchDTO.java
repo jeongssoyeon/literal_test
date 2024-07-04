@@ -70,7 +70,5 @@ public class BranchDTO {
 				+ branch_address + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
     
-    
-
 	
 }

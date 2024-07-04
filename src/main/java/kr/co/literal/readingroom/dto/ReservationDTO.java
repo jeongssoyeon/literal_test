@@ -16,7 +16,8 @@ public class ReservationDTO {
     private String using_seat;
     private String re_name;
     private String re_phone;
-    
+    private String branch_code;
+    private String start_time;
 	public String getReservation_code() {
 		return reservation_code;
 	}
@@ -89,13 +90,26 @@ public class ReservationDTO {
 	public void setRe_phone(String re_phone) {
 		this.re_phone = re_phone;
 	}
+	public String getBranch_code() {
+		return branch_code;
+	}
+	public void setBranch_code(String branch_code) {
+		this.branch_code = branch_code;
+	}
+	public String getStart_time() {
+		return start_time;
+	}
+	public void setStart_time(String start_time) {
+		this.start_time = start_time;
+	}
 	@Override
 	public String toString() {
 		return "ReservationDTO [reservation_code=" + reservation_code + ", room_code=" + room_code
 				+ ", mycoupon_number=" + mycoupon_number + ", reservation_total=" + reservation_total + ", seat_code="
 				+ seat_code + ", reservation_payment=" + reservation_payment + ", time_code=" + time_code
 				+ ", end_time=" + end_time + ", reservation_date=" + reservation_date + ", using_seat=" + using_seat
-				+ ", re_name=" + re_name + ", re_phone=" + re_phone + "]";
+				+ ", re_name=" + re_name + ", re_phone=" + re_phone + ", branch_code=" + branch_code + ", start_time="
+				+ start_time + "]";
 	}
     
     

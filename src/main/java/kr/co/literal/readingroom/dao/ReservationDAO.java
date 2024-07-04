@@ -1,13 +1,36 @@
 package kr.co.literal.readingroom.dao;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 import kr.co.literal.readingroom.dto.ReservationDTO;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import java.util.List;
 
-@Mapper
-public interface ReservationDAO {
+@Repository
+public class ReservationDAO {
 
-    @Insert("INSERT INTO reservation (reservation_code, room_code, mycoupon_number, reservation_total, seat_code, reservation_payment, time_code, end_time, reservation_date, using_seat, re_name, re_phone) " +
-            "VALUES (#{reservationCode}, #{roomCode}, #{myCouponNumber}, #{reservationTotal}, #{seatCode}, #{reservationPayment}, #{timeCode}, #{endTime}, #{reservationDate}, #{usingSeat}, #{reName}, #{rePhone})")
-    void insertReservation(ReservationDTO reservation);
+    @Autowired
+    private SqlSession sqlSession;
+
+    private static final String NAMESPACE = "kr.co.literal.readingroom.ReadingRoomMapper";
+
+    public void insertReservation(ReservationDTO reservation) {
+        sqlSession.insert(NAMESPACE + ".insertReservation", reservation);
+    }
+
+    public List<ReservationDTO> getAllReservations() {
+        return sqlSession.selectList(NAMESPACE + ".getAllReservations");
+    }
+
+    public ReservationDTO getReservationByCode(String reservation_code) {
+        return sqlSession.selectOne(NAMESPACE + ".getReservationByCode", reservation_code);
+    }
+
+    public void updateReservation(ReservationDTO reservation) {
+        sqlSession.update(NAMESPACE + ".updateReservation", reservation);
+    }
+
+    public void deleteReservation(String reservation_code) {
+        sqlSession.delete(NAMESPACE + ".deleteReservation", reservation_code);
+    }
 }

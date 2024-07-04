@@ -6,6 +6,7 @@ public class SeatDTO {
 
     private String branch_code;
     private String seat_code;
+    
 	public String getBranch_code() {
 		return branch_code;
 	}
@@ -22,6 +23,5 @@ public class SeatDTO {
 	public String toString() {
 		return "SeatDTO [branch_code=" + branch_code + ", seat_code=" + seat_code + "]";
 	}
-    
     
 }

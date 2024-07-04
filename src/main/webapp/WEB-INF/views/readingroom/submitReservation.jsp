@@ -19,33 +19,33 @@
             <hr class="title-divider">
             <div class="payment-options">
                 <h2>선택된 좌석 정보</h2>
-                <p>지점 : ${branch}</p>
-                <p>좌석 번호 : ${seat}</p>
+                <p>지점 : ${branch_code}</p>
+                <p>좌석 번호 : ${seat_code}</p>
                 <!-- 결제 옵션 추가 -->
                 <form id="paymentForm" action="${pageContext.request.contextPath}/paymentForm" method="post">
-                    <input type="hidden" name="branch" value="${branch}">
-                    <input type="hidden" name="seat" value="${seat}">
-                    <input type="hidden" name="totalAmount" id="totalAmount">
+                    <input type="hidden" name="branch" value="${branch_code}">
+                    <input type="hidden" name="seat" value="${seat_code}">
+                    <input type="hidden" name="room_amount" id="room_amount">
                     <h2>이용권</h2>
                     <div class="options">
-                        <button type="button" class="option" data-usageTime="2시간" data-amount="4000">2 시간<br>4,000 원</button>
-                        <button type="button" class="option" data-usageTime="4시간" data-amount="6000">4 시간<br>6,000 원</button>
-                        <button type="button" class="option" data-usageTime="6시간" data-amount="8000">6 시간<br>8,000 원</button>
-                        <button type="button" class="option" data-usageTime="종일권" data-amount="10000">종일권<br>10,000 원</button>
+                        <button type="button" class="option" time_code="2시간" room_amount="4000">2 시간<br>4,000 원</button>
+                        <button type="button" class="option" time_code="4시간" room_amount="6000">4 시간<br>6,000 원</button>
+                        <button type="button" class="option" time_code="6시간" room_amount="8000">6 시간<br>8,000 원</button>
+                        <button type="button" class="option" time_code="종일권" room_amount="10000">종일권<br>10,000 원</button>
                     </div>
-                    <input type="hidden" name="usageTime" id="selectedUsageTime">
+                    <input type="hidden" name="time_code" id="selectedUsageTime">
                     <h2>시작 시간</h2>
                     <div class="times">
-                        <button type="button" class="time" data-startTime="09:00">09 : 00</button>
-                        <button type="button" class="time" data-startTime="10:00">10 : 00</button>
-                        <button type="button" class="time" data-startTime="11:00">11 : 00</button>
-                        <button type="button" class="time" data-startTime="12:00">12 : 00</button>
-                        <button type="button" class="time" data-startTime="13:00">13 : 00</button>
-                        <button type="button" class="time" data-startTime="14:00">14 : 00</button>
-                        <button type="button" class="time" data-startTime="15:00">15 : 00</button>
-                        <button type="button" class="time" data-startTime="16:00">16 : 00</button>
+                        <button type="button" class="time" start_time="09:00">09 : 00</button>
+                        <button type="button" class="time" start_time="10:00">10 : 00</button>
+                        <button type="button" class="time" start_time="11:00">11 : 00</button>
+                        <button type="button" class="time" start_time="12:00">12 : 00</button>
+                        <button type="button" class="time" start_time="13:00">13 : 00</button>
+                        <button type="button" class="time" start_time="14:00">14 : 00</button>
+                        <button type="button" class="time" start_time="15:00">15 : 00</button>
+                        <button type="button" class="time" start_time="16:00">16 : 00</button>
                     </div>
-                    <input type="hidden" name="startTime" id="selectedStartTime">
+                    <input type="hidden" name="start_time" id="selectedStartTime">
                     <button type="submit" class="btn-primary">결제하기</button>
                 </form>
             </div>
@@ -70,7 +70,7 @@
                 }
                 selectedOption = this;
                 selectedOption.classList.add("selected");
-                document.getElementById("selectedUsageTime").value = selectedOption.getAttribute("data-usageTime");
+                document.getElementById("selectedUsageTime").value = selectedOption.getAttribute("time_code");
             });
         });
 
@@ -81,7 +81,7 @@
                 }
                 selectedTime = this;
                 selectedTime.classList.add("selected");
-                document.getElementById("selectedStartTime").value = selectedTime.getAttribute("data-startTime");
+                document.getElementById("selectedStartTime").value = selectedTime.getAttribute("start_time");
             });
         });
 

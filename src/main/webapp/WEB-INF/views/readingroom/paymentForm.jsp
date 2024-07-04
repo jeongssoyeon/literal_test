@@ -17,26 +17,29 @@
         <div class="reservation-form">
             <h1>결제하기</h1>
             <hr class="title-divider">
-            <div class="payment-summary">
-                <p>지점: ${branch}</p>
-                <p>좌석 번호: ${seat}</p>
-                <p>이용 시간: ${usageTime}</p>
-                <p>시작 시간: ${startTime}</p>
-                <!-- 추가적인 결제 정보 입력란 -->
-                <form action="${pageContext.request.contextPath}/processPayment" method="post">
-                    <input type="hidden" name="branch" value="${branch}">
+            <div class="payment-options">
+                <h2>선택된 좌석 정보</h2>
+                <p>지점 : ${branch_code}</p>
+                <p>좌석 번호 : ${seat}</p>
+                <p>이용 시간 : ${time_code}</p>
+                <p>시작 시간 : ${end_time}</p>
+                <p>결제 금액 : ${totalAmount}</p>
+                <!-- 결제 정보 입력 -->
+                <form id="processReservationForm" action="${pageContext.request.contextPath}/processReservation" method="post">
+                    <input type="hidden" name="branch_code" value="${branch_code}">
                     <input type="hidden" name="seat" value="${seat}">
-                    <input type="hidden" name="usageTime" value="${usageTime}">
-                    <input type="hidden" name="startTime" value="${startTime}">
-                    <!-- 결제 관련 추가 입력란 -->
-                    <label for="paymentMethod">결제 방법:</label>
-                    <select id="paymentMethod" name="paymentMethod">
-                        <option value="신용카드">신용카드</option>
-                        <option value="계좌이체">계좌이체</option>
-                    </select><br>
-                    <label for="totalAmount">결제 금액:</label>
-                    <input type="text" name="totalAmount" id="totalAmount" value="" readonly> <!-- 예시 금액 -->
-                    
+                    <input type="hidden" name="time_code" value="${time_code}">
+                    <input type="hidden" name="end_time" value="${end_time}">
+                    <input type="hidden" name="totalAmount" value="${totalAmount}">
+                    <h2>예약자 정보</h2>
+                    <div class="form-group">
+                        <label for="re_name">이름:</label>
+                        <input type="text" id="re_name" name="re_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="re_phone">전화번호:</label>
+                        <input type="text" id="re_phone" name="re_phone" required>
+                    </div>
                     <button type="submit" class="btn-primary">결제 완료</button>
                 </form>
             </div>
@@ -45,20 +48,42 @@
 </main>
 <%@ include file="../footer.jsp"%>
 
-<!-- JavaScript 코드 -->
 <script>
-    // 이용 시간과 금액 매핑
-    const usageTimeToAmount = {
-        "2시간": 4000,
-        "4시간": 6000,
-        "6시간": 8000,
-        "종일권": 10000
-    };
+    document.addEventListener("DOMContentLoaded", function() {
+        const options = document.querySelectorAll(".option");
+        const times = document.querySelectorAll(".time");
+        const paymentForm = document.getElementById("paymentForm");
+        let selectedOption = null;
+        let selectedTime = null;
 
-    // 이용 시간에 따른 금액 설정
-    const usageTime = "${usageTime}";
-    const totalAmount = usageTimeToAmount[usageTime] || 0;
-    document.getElementById("totalAmount").value = totalAmount;
+        options.forEach(option => {
+            option.addEventListener("click", function() {
+                if (selectedOption) {
+                    selectedOption.classList.remove("selected");
+                }
+                selectedOption = this;
+                selectedOption.classList.add("selected");
+                document.getElementById("selectedUsageTime").value = selectedOption.getAttribute("data-usageTime");
+                document.getElementById("totalAmount").value = selectedOption.getAttribute("data-amount");
+            });
+        });
 
-    // 결제 방법에 따른 추가 로직이 필요한 경우 추가 가능
+        times.forEach(time => {
+            time.addEventListener("click", function() {
+                if (selectedTime) {
+                    selectedTime.classList.remove("selected");
+                }
+                selectedTime = this;
+                selectedTime.classList.add("selected");
+                document.getElementById("selectedStartTime").value = selectedTime.getAttribute("data-startTime");
+            });
+        });
+
+        paymentForm.addEventListener("submit", function(event) {
+            if (!selectedOption || !selectedTime) {
+                event.preventDefault();
+                alert("이용권과 시작 시간을 모두 선택해 주세요.");
+            }
+        });
+    });
 </script>

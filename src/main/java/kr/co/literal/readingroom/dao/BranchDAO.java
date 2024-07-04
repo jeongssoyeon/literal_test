@@ -1,23 +1,27 @@
 package kr.co.literal.readingroom.dao;
 
+import kr.co.literal.readingroom.BranchMapper;
+import kr.co.literal.readingroom.dto.BranchDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+@Repository
+public class BranchDAO {
 
-import kr.co.literal.readingroom.dto.BranchDTO;
+    @Autowired
+    private BranchMapper branchMapper;
 
-@Mapper
-public interface BranchDAO {
+    public List<BranchDTO> selectAllBranches() {
+        return branchMapper.selectAllBranches();
+    }
 
-    @Insert("INSERT INTO branch (branch_code, branch_name, branch_email, branch_pw, branch_detail, branch_address, latitude, longitude) " +
-            "VALUES (#{branchCode}, #{branchName}, #{branchEmail}, #{branchPw}, #{branchDetail}, #{branchAddress}, #{latitude}, #{longitude})")
-    void insertBranch(BranchDTO branch);
+    public BranchDTO selectBranchByCode(String code) {
+        return branchMapper.selectBranchByCode(code);
+    }
 
-    @Select("SELECT * FROM branch WHERE branch_code = #{branchCode}")
-    BranchDTO selectBranchByCode(String branchCode);
-
-    @Select("SELECT * FROM branch")
-    List<BranchDTO> selectAllBranches();
+    public void insertBranch(BranchDTO branch) {
+        branchMapper.insertBranch(branch);
+    }
 }

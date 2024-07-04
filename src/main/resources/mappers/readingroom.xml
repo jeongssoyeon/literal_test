@@ -1,91 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.literal.readingroom.dao.ReadingRoomDAO">
+<mapper namespace="kr.co.literal.readingroom.dao.BranchMapper">
 
-    <!-- ReadingRoom 관련 SQL문 -->
-    <select id="getAllReadingRooms" resultType="kr.co.literal.readingroom.dto.ReadingRoomDTO">
-        SELECT * FROM reading_room
-    </select>
+    <!-- 예약 결제 테이블 -->
+    <insert id="insertReservation" parameterType="kr.co.literal.readingroom.dto.ReservationDTO">
+        INSERT INTO reservation (reservation_code, room_code, mycoupon_number, reservation_total, seat_code, reservation_payment, time_code, end_time, reservation_date, using_seat, re_name, re_phone, branch_code, start_time)
+        VALUES (#{reservation_code}, #{room_code}, #{mycoupon_number}, #{reservation_total}, #{seat_code}, #{reservation_payment}, #{time_code}, #{end_time}, #{reservation_date}, #{using_seat}, #{re_name}, #{re_phone}, #{branch_code}, #{start_time})
+    </insert>
 
-    <select id="getReadingRoomByCode" parameterType="string" resultType="kr.co.literal.readingroom.dto.ReadingRoomDTO">
-        SELECT * FROM reading_room WHERE room_code = #{room_code}
-    </select>
-
+    <!-- 이용권 테이블 -->
     <insert id="insertReadingRoom" parameterType="kr.co.literal.readingroom.dto.ReadingRoomDTO">
-        INSERT INTO reading_room (room_code, duration, room_amount) VALUES (#{room_code}, #{duration}, #{room_amount})
+        INSERT INTO reading_room (room_code, duration, room_amount) 
+        VALUES (#{room_code}, #{duration}, #{room_amount})
     </insert>
 
-    <update id="updateReadingRoom" parameterType="kr.co.literal.readingroom.dto.ReadingRoomDTO">
-        UPDATE reading_room SET duration = #{duration}, room_amount = #{room_amount} WHERE room_code = #{room_code}
-    </update>
-
-    <delete id="deleteReadingRoom" parameterType="string">
-        DELETE FROM reading_room WHERE room_code = #{room_code}
-    </delete>
-
-    <!-- UseTime 관련 SQL문 -->
-    <select id="getAllUseTimes" resultType="kr.co.literal.readingroom.dto.UseTimeDTO">
-        SELECT * FROM use_time
-    </select>
-
-    <select id="getUseTimeByCode" parameterType="string" resultType="kr.co.literal.readingroom.dto.UseTimeDTO">
-        SELECT * FROM use_time WHERE time_code = #{time_code}
-    </select>
-
-    <insert id="insertUseTime" parameterType="kr.co.literal.readingroom.dto.UseTimeDTO">
-        INSERT INTO use_time (time_code, start_time) VALUES (#{time_code}, #{start_time})
-    </insert>
-
-    <update id="updateUseTime" parameterType="kr.co.literal.readingroom.dto.UseTimeDTO">
-        UPDATE use_time SET start_time = #{start_time} WHERE time_code = #{time_code}
-    </update>
-
-    <delete id="deleteUseTime" parameterType="string">
-        DELETE FROM use_time WHERE time_code = #{time_code}
-    </delete>
-
-    <!-- Seat 관련 SQL문 -->
-    <select id="getAllSeats" resultType="kr.co.literal.readingroom.dto.SeatDTO">
-        SELECT * FROM seat
-    </select>
-
-    <select id="getSeatByCode" parameterType="string" resultType="kr.co.literal.readingroom.dto.SeatDTO">
-        SELECT * FROM seat WHERE seat_code = #{seat_code}
-    </select>
-
+    <!-- 좌석 테이블 -->
     <insert id="insertSeat" parameterType="kr.co.literal.readingroom.dto.SeatDTO">
-        INSERT INTO seat (branch_code, seat_code) VALUES (#{branch_code}, #{seat_code})
+        INSERT INTO seat (seat_code, branch_code, row, column, visible)
+        VALUES (#{seat_code}, #{branch_code}, #{row}, #{column}, #{visible})
     </insert>
 
-    <update id="updateSeat" parameterType="kr.co.literal.readingroom.dto.SeatDTO">
-        UPDATE seat SET branch_code = #{branch_code} WHERE seat_code = #{seat_code}
-    </update>
+    <!-- 이용시간 테이블 -->
+    <insert id="insertUseTime" parameterType="kr.co.literal.readingroom.dto.UseTimeDTO">
+        INSERT INTO use_time (time_code, start_time) 
+        VALUES (#{time_code}, #{start_time})
+    </insert>
 
-    <delete id="deleteSeat" parameterType="string">
-        DELETE FROM seat WHERE seat_code = #{seat_code}
-    </delete>
-
-    <!-- MyCoupon 관련 SQL문 -->
-    <select id="getAllMyCoupons" resultType="kr.co.literal.readingroom.dto.MyCouponDTO">
-        SELECT * FROM my_coupon
-    </select>
-
-    <select id="getMyCouponByNumber" parameterType="string" resultType="kr.co.literal.readingroom.dto.MyCouponDTO">
-        SELECT * FROM my_coupon WHERE mycoupon_number = #{mycoupon_number}
-    </select>
-
+    <!-- 마이이용권 테이블 -->
     <insert id="insertMyCoupon" parameterType="kr.co.literal.readingroom.dto.MyCouponDTO">
         INSERT INTO my_coupon (email, mycoupon_number, room_code, issue_date, expiry_date, usage_date) 
         VALUES (#{email}, #{mycoupon_number}, #{room_code}, #{issue_date}, #{expiry_date}, #{usage_date})
     </insert>
 
-    <update id="updateMyCoupon" parameterType="kr.co.literal.readingroom.dto.MyCouponDTO">
-        UPDATE my_coupon SET email = #{email}, room_code = #{room_code}, issue_date = #{issue_date}, expiry_date = #{expiry_date}, usage_date = #{usage_date}
-        WHERE mycoupon_number = #{mycoupon_number}
-    </update>
+    <!-- 지점 branch -->
+    <!-- 지점테이블 -->
+    <insert id="insertBranch" parameterType="kr.co.literal.readingroom.dto.BranchDTO">
+        INSERT INTO branch (branch_code, branch_name, branch_email, branch_pw, branch_detail, branch_address, latitude, longitude)
+        VALUES (#{branch_code}, #{branch_name}, #{branch_email}, #{branch_pw}, #{branch_detail}, #{branch_address}, #{latitude}, #{longitude})
+    </insert>
 
-    <delete id="deleteMyCoupon" parameterType="string">
-        DELETE FROM my_coupon WHERE mycoupon_number = #{mycoupon_number}
-    </delete>
+    <!-- 모든 지점 목록 -->
+    <select id="selectAllBranches" resultType="kr.co.literal.readingroom.dto.BranchDTO">
+        SELECT branch_code, branch_name, branch_email, branch_pw, branch_detail, branch_address, latitude, longitude 
+        FROM branch
+    </select>
+
+    <!-- Branch 조회 -->
+    <select id="selectBranchByCode" parameterType="String" resultType="kr.co.literal.readingroom.dto.BranchDTO">
+        SELECT branch_code, branch_name, branch_email, branch_pw, branch_detail, branch_address, latitude, longitude 
+        FROM branch 
+        WHERE branch_code = #{branch_code}
+    </select>
+
+    <!-- 해당 Branch의 좌석 조회 -->
+    <select id="selectSeatsByBranchCode" parameterType="String" resultType="kr.co.literal.readingroom.dto.SeatDTO">
+        SELECT seat_code, branch_code, row, column, visible 
+        FROM seat 
+        WHERE branch_code = #{branch_code}
+    </select>
 </mapper>
